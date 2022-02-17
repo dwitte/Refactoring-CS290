@@ -1,42 +1,38 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class RefactorExample1 {
 
-    List<Integer> playerCards;
-    List<Integer> dealerCards;
+    Hand playerHand;
+    Hand dealerCards;
+
+    // Deck deck = new Deck();
 
     public RefactorExample1() {
-        playerCards = new ArrayList();
-        dealerCards = new ArrayList();
+        playerHand = new Hand();
+        dealerCards = new Hand();
     }
 
     public void playGame() {
-        Random rand = new Random();
-        playerCards.add(rand.nextInt(10));
-        dealerCards.add(rand.nextInt(10));
-        playerCards.add(rand.nextInt(10));
-        dealerCards.add(rand.nextInt(10));
+        initialDeal();
 
-        //TODO: Implement card drawing for player and dealer.
+//        //TODO: Implement card drawing for player and dealer.
+//        if(playerCards.value() < 21)
+//            playerCards.add(deck.getCard());
 
-        int playerHandValue = 0;
-        for(Integer val : playerCards) {
-            playerHandValue += val;
-        }
-
-        int dealerHandValue = 0;
-        for(Integer val : dealerCards) {
-            dealerHandValue += val;
-        }
-
-        if(playerHandValue > dealerHandValue) {
+        if(playerHand.value() > dealerCards.value()) {
             System.out.println("Player wins!");
-        } else if (playerHandValue == dealerHandValue) {
+        } else if (playerHand.value() == dealerCards.value()) {
             System.out.println("It's a draw.");
         } else {
             System.out.println("You lose.");
         }
+    }
+
+    private void initialDeal() {
+        Random rand = new Random();
+        playerHand.add(rand.nextInt(10));
+        dealerCards.add(rand.nextInt(10));
+        playerHand.add(rand.nextInt(10));
+        dealerCards.add(rand.nextInt(10));
     }
 }
