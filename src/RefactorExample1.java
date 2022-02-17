@@ -39,8 +39,4 @@ public class RefactorExample1 {
             System.out.println("You lose.");
         }
     }
-
-    private void drawCard() {
-
-    }
 }
