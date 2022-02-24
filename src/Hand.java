@@ -9,6 +9,8 @@ public class Hand {
     }
 
     public void add(int card) {
+        // PROBLEM!!!! we are interpreting the int passed in as the value of the card, not the index of the card.
+        // Something doesn't quite feel right....
         cards.add(card);
     }
 
