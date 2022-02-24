@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RefactorExample1 {
@@ -5,11 +7,13 @@ public class RefactorExample1 {
     Hand playerHand;
     Hand dealerCards;
 
-    // Deck deck = new Deck();
+    private Deck deck;
 
     public RefactorExample1() {
         playerHand = new Hand();
         dealerCards = new Hand();
+
+        deck = new Deck();
     }
 
     public void playGame() {
@@ -29,10 +33,9 @@ public class RefactorExample1 {
     }
 
     private void initialDeal() {
-        Random rand = new Random();
-        playerHand.add(rand.nextInt(10));
-        dealerCards.add(rand.nextInt(10));
-        playerHand.add(rand.nextInt(10));
-        dealerCards.add(rand.nextInt(10));
+        playerHand.add(deck.drawCard());
+        dealerCards.add(deck.drawCard());
+        playerHand.add(deck.drawCard());
+        dealerCards.add(deck.drawCard());
     }
 }
