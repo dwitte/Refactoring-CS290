@@ -4,13 +4,13 @@ import java.util.Random;
 
 public class Deck {
 
-    List<Integer> deck;
+    List<Card> deck;
 
     public Deck() {
-        //Setup all of the cards in order.
-        List<Integer> initialDeck = new ArrayList<>();
+        //Setup all of the cards in order. Cards use an index to identify them uniquely.
+        List<Card> initialDeck = new ArrayList<>();
         for(int i = 0; i<52; i++) {
-            initialDeck.add(i);
+            initialDeck.add(new Card(i));
         }
         //Randomize the deck order
         Random random = new Random();
@@ -19,8 +19,8 @@ public class Deck {
         }
     }
 
-    public Integer drawCard() {
-        int card = deck.get(0);
+    public Card drawCard() {
+        Card card = deck.get(0);
         deck.remove(0);
         return card;
     }
