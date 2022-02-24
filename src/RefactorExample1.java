@@ -7,23 +7,13 @@ public class RefactorExample1 {
     Hand playerHand;
     Hand dealerCards;
 
-    // Deck deck = new Deck();
-    List<Integer> deck;
+    private Deck deck;
 
     public RefactorExample1() {
         playerHand = new Hand();
         dealerCards = new Hand();
 
-        //Setup all of the cards in order.
-        List<Integer> initialDeck = new ArrayList<>();
-        for(int i = 0; i<52; i++) {
-            initialDeck.add(i);
-        }
-        //Randomize the deck order
-        Random random = new Random();
-        while(!initialDeck.isEmpty()) {
-            deck.add(initialDeck.get(random.nextInt(initialDeck.size())));
-        }
+        deck = new Deck();
     }
 
     public void playGame() {
@@ -43,15 +33,9 @@ public class RefactorExample1 {
     }
 
     private void initialDeal() {
-        playerHand.add(drawCard());
-        dealerCards.add(drawCard());
-        playerHand.add(drawCard());
-        dealerCards.add(drawCard());
-    }
-
-    private Integer drawCard() {
-        int card = deck.get(0);
-        deck.remove(0);
-        return card;
+        playerHand.add(deck.drawCard());
+        dealerCards.add(deck.drawCard());
+        playerHand.add(deck.drawCard());
+        dealerCards.add(deck.drawCard());
     }
 }
